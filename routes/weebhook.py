@@ -1,6 +1,9 @@
 from flask import Blueprint, request, jsonify, Response
 from dotenv import load_dotenv
 import os
+import sys
+import json
+import requests
 
 load_dotenv()
 
@@ -35,13 +38,13 @@ def tafic():
         if messaging_event.get("message"):  # alguien envia un mensaje
           # el facebook ID de la persona enviando el mensaje
           sender_id = messaging_event["sender"]["id"]
-          print("sender: ",recipient_id)
+          print("sender: ",sender_id)
           # el facebook ID de la pagina que recibe (tu pagina)
           recipient_id = messaging_event["recipient"]["id"]
           print("page: ",recipient_id)
           # el texto del mensaje
           message_text = messaging_event["message"]["text"]
-          print("text: ",recipient_id)
+          print("text: ",message_text)
 
           send_message(sender_id, "Hola")
 
