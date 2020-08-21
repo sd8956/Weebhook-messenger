@@ -51,9 +51,9 @@ def tafic():
     return "ok", 200
 
 
-def send_message(recipient_id, message_text):
+def send_message(sender_id, message_text):
 
-  log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+  log("sending message to {recipient}: {text}".format(recipient=sender_id, text=message_text))
 
   params = {
     "access_token": os.environ["PAGE_ACCESS_TOKEN"]
@@ -63,7 +63,7 @@ def send_message(recipient_id, message_text):
   }
   data = json.dumps({
     "recipient": {
-      "id": recipient_id
+      "id": sender_id
     },
     "message": {
       "text": message_text
